@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fapi
+spec:
+  replicas: 1
+  revisionHistoryLimit: 3
+  selector:
+    matchLabels:
+      app: fapi
+  template:
+    metadata:
+      labels:
+        app: fapi
+    spec:
+      containers:
+      - image: us.gcr.io/spectral-macroapi/fapi@sha256:3bb9743d8f0641bb965a90b6ed6016ed519668e6e415bf946b14583465cdc7ce
+        name: fapi
+        ports:
+        - containerPort: 80
